@@ -1,10 +1,12 @@
+import  {ToggleColorMode}  from "./components/ToggleColorMode";
 
 function App() {
-  return (
-  <div>
-    hii
-  </div>
-  );
+    return (
+        <>
+            <ToggleColorMode />
+            <p>hiii</p>
+        </>
+    );
 }
 
 export default App;
