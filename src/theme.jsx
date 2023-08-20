@@ -6,6 +6,7 @@ const theme = {
     initialColorMode: "dark",
     useSystemColorMode:true,
   },
+
   styles:{
     global:{
       body: {
