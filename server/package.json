@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "@buzzchat/server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,6 +13,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
     "socket.io": "^4.7.2",
     "yup": "^1.2.0"
   }

@@ -3,6 +3,10 @@ const app = express()
 const { Server } = require("socket.io")
 const helmet = require("helmet")
 const cors = require("cors")
+const authRouter = require("./routers/authRouter")
+const morgan = require('morgan')
+
+
 
 
 
@@ -14,7 +18,7 @@ const server = require('http').createServer(app)
 const io = new Server(server, {
   cors: {
     origin: frontEndLink,
-    credentials: "true"
+    credentials: true
   }
 })
 
@@ -23,21 +27,22 @@ const io = new Server(server, {
 app.use(helmet())
 app.use(cors({
   origin: frontEndLink,
-  credentials: "true"
+  credentials: true
 }))
 app.use(express.json())
 
+app.use(morgan('dev'));
 
 
-app.post("/auth/login", (req, res) => {
-  res.json("confirmed login!")
-})
-app.post("/auth/register", (req, res) => {
-  res.json("confirmed signup!")
-})
+app.use("/auth", authRouter)
+
+
+
+
+
 
 app.get("/", (req, res) => {
-  res.json("Hi There!")
+  res.json("Hi There, homepage!")
 })
 
 
