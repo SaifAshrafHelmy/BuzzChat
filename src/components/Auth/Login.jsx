@@ -8,8 +8,10 @@ import {
 import { Form, Formik } from "formik";
 import * as Yup from "yup"
 import { TextField } from "./TextField";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate()
 
     return (
       <Formik
@@ -17,14 +19,12 @@ export const Login = () => {
 
       validationSchema= {Yup.object({
         username: Yup.string()
-        .required("Username required!")
-        .min(6, "Username too short!")
-        .max(28, "Username too long!"),
+        .required("Username required!"),
+
 
         password: Yup.string()
         .required("Password required!")
-        .min(6, "Password too short!")
-        .max(28, "Password too long!")
+
       })} 
 
       onSubmit= {(values,actions)=>{
@@ -67,10 +67,8 @@ export const Login = () => {
                 pt={"1rem"}
                 gap={"2rem"}
             >
-                <Button colorScheme="teal" type="submit">
-                    Login
-                </Button>
-                <Button>Create Account</Button>
+                <Button colorScheme="teal" type="submit">Login</Button>
+                <Button onClick={()=> navigate("/register")}>Create Account</Button>
             </ButtonGroup>
         </VStack>
 
