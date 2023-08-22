@@ -25,7 +25,7 @@ const validateForm = (req, res, authType) => {
       if (valid) {
         console.log(`-------------- VALID ${authType} REQUEST -----------`)
         console.log(valid)
-        res.status(200).json(`Successful ${authType}`)
+        // res.status(200).json(`Successful ${authType}`)
 
       }
     })

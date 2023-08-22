@@ -36,7 +36,7 @@ export const SignUp = () => {
             onSubmit={(values, actions) => {
                 alert(JSON.stringify(values, null, 2));
                 const vals = { ...values };
-                actions.resetForm();
+                // actions.resetForm();
 
                 fetch("http://localhost:3030/auth/register", {
                     method: "POST",
