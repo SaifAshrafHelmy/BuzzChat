@@ -42,6 +42,7 @@ app.use(session({
     secure:process.env.ENVIRONMENT === "production",
     httpOnly:true,
     sameSite:process.env.ENVIRONMENT === "production" ? "none":"lax",
+    expires: 1000 * 60 * 60 * 24 * 7 
   }
 
 

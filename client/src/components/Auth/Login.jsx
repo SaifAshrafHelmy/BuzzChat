@@ -1,11 +1,16 @@
-import { VStack, ButtonGroup, Button, Heading } from "@chakra-ui/react";
+import { VStack, ButtonGroup, Button, Heading, Text } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { TextField } from "./TextField";
 import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AccountContext } from "../AccountContext";
 
 export const Login = () => {
     const navigate = useNavigate();
+    const {setUser} = useContext(AccountContext)
+    const [error, setError ]= useState(null)
+
 
     return (
         <Formik
@@ -22,7 +27,7 @@ export const Login = () => {
                     .max(28, "Password too long!"),
             })}
             onSubmit={(values, actions) => {
-                alert(JSON.stringify(values, null, 2));
+                // alert(JSON.stringify(values, null, 2));
                 const vals = { ...values };
                 // actions.resetForm();
 
@@ -45,7 +50,13 @@ export const Login = () => {
                     })
                     .then((data) => {
                         if (!data) return;
+                        setUser({...data})
+
+                        if(data.status) {setError(data.status)}
                         console.log(data);
+                        if(data.loggedIn){
+                            navigate("/home")
+                        }
                     });
             }}
         >
@@ -58,6 +69,9 @@ export const Login = () => {
                 spacing={"1.5rem"}
             >
                 <Heading mb={"1.5rem"}>Login to BuzzChat</Heading>
+
+                <Text as={"p"} color={"red.500"}>{error}</Text>
+
 
                 <TextField
                     type="text"
