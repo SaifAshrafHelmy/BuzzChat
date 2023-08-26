@@ -6,6 +6,9 @@ const cors = require("cors")
 const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
 const session = require("express-session")
+const Redis = require("ioredis")
+const RedisStore = require("connect-redis").default
+
 require("dotenv").config()
 
 
@@ -23,6 +26,7 @@ const io = new Server(server, {
 })
 
 
+const redisClient = new Redis()
 
 app.use(helmet())
 app.use(cors({
@@ -35,6 +39,7 @@ app.use(session({
   secret: process.env.COOKIE_SECRET,
   credentials:true,
   name:"sid",
+  store: new RedisStore({ client:redisClient }),
   resave:false,
   // Don't set a cookie if the user hasn't logged in
   saveUninitialized:false,
