@@ -54,7 +54,8 @@ export const SignUp = () => {
                         return;
                     })
                     .then((res) => {
-                        if (!res || !res.ok || res.status >= 400) {
+                        // if (!res || !res.ok || res.status >= 400) {
+                        if (!res) {
                             return;
                         }
                         return res.json();

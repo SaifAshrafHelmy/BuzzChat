@@ -32,7 +32,7 @@ module.exports.handleRegisterPOST = async(req,res)=>{
 
 
 module.exports.handleLoginGET = (req, res) => {
-  console.log(req.session)
+  // console.log(req.session)
   if (req.session.user && req.session.user.username) {
     console.log("logged in bro")
     res.json({ loggedIn: true, username: req.session.username })

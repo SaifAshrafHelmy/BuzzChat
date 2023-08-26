@@ -6,7 +6,7 @@ const cors = require("cors")
 const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
 const session = require("express-session")
-const Redis = require("ioredis")
+const redisClient = require("./redis")
 const RedisStore = require("connect-redis").default
 
 require("dotenv").config()
@@ -26,7 +26,6 @@ const io = new Server(server, {
 })
 
 
-const redisClient = new Redis()
 
 app.use(helmet())
 app.use(cors({

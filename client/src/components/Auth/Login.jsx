@@ -43,7 +43,7 @@ export const Login = () => {
                         return;
                     })
                     .then((res) => {
-                        if (!res || !res.ok || res.status >= 400) {
+                        if (!res ) {
                             return;
                         }
                         return res.json();

@@ -2,24 +2,20 @@ const express = require('express')
 const validateForm = require('../controllers/validateForm')
 const router = express.Router()
 
-const { handleLoginGET, handleLoginPOST, handleRegisterPOST } = require('../controllers/authController')
+const { handleLoginGET, handleLoginPOST, handleRegisterPOST, handleLogoutPOST } = require('../controllers/authController')
+const { rateLimiter } = require('../controllers/rateLimiter')
 
 
 router.route("/register")
-.post( validateForm, handleRegisterPOST)
+  .post(rateLimiter(60,5), validateForm, handleRegisterPOST)
 
 router.route("/login")
   .get(handleLoginGET)
-  .post( validateForm, handleLoginPOST )
+  .post(rateLimiter(60,10), validateForm, handleLoginPOST)
 
 
 router.route("/logout")
-  .post( (req,res)=>{
-    console.log("GOT A LOGOUT");
-    req.session.destroy()
-    res.json({ loggedIn: false, status: "User logged out" })
-
-  } )
+  .post(handleLogoutPOST)
 
 
 

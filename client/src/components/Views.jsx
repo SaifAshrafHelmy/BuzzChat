@@ -6,6 +6,7 @@ import { useContext } from "react"
 import { AccountContext } from "./AccountContext"
 import { Text } from "@chakra-ui/react"
 import { SpinnerIcon } from "@chakra-ui/icons"
+import { Homepage } from "./Homepage"
 
 export const Views = () => {
   const{user} = useContext(AccountContext)
@@ -24,7 +25,7 @@ export const Views = () => {
         <Route path="/register" element={<SignUp/>}> </Route>
         
         <Route element={<PrivateRoutes/>}>
-          <Route path="/home" element={<h2>Hi! Welcome to our homepage!</h2>}> </Route>
+          <Route path="/home" element={<Homepage/>}> </Route>
         </Route>
 
 
