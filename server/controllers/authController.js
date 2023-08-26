@@ -74,3 +74,12 @@ module.exports.handleLoginPOST = async(req,res)=>{
 
 
   }
+
+
+
+  module.exports.handleLogoutPOST = (req,res)=>{
+    console.log("GOT A LOGOUT");
+    req.session.destroy()
+    res.json({ loggedIn: false, status: "User logged out" })
+
+  }
