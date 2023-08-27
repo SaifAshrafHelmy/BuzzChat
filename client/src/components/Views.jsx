@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { AccountContext } from "./AccountContext"
 import { Text } from "@chakra-ui/react"
 import { SpinnerIcon } from "@chakra-ui/icons"
-import { Homepage } from "./Homepage"
+import { Homepage } from "./Home/Homepage"
 
 export const Views = () => {
   const{user} = useContext(AccountContext)
