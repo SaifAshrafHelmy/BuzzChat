@@ -21,9 +21,11 @@ export const Chat = () => {
             fontSize={"lg"}
         >
             <TabPanels>
+                <TabPanel>
                 <Text>
-                    You don't have any friends yet, Click add friends to start.
+                    You don't have any friends yet, Click Add Friend to start.
                 </Text>
+                </TabPanel>
             </TabPanels>
         </VStack>
     );

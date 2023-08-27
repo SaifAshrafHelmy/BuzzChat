@@ -38,7 +38,7 @@ export const Sidebar = () => {
                     <Text>John Smith</Text>
                 </HStack> */}
                     {friendsList.map((friend) => (
-                        <HStack as={Tab}>
+                        <HStack as={Tab} key={friend.username} justifyContent={"flex-start"} w={"100%"}>
                             <Circle
                                 bg={friend.connected ? "green.500" : "red.500"}
                                 w={"15px"}

@@ -5,59 +5,33 @@ const helmet = require("helmet")
 const cors = require("cors")
 const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
-const session = require("express-session")
-const redisClient = require("./redis")
-const RedisStore = require("connect-redis").default
-
-require("dotenv").config()
+const {sessionMiddleware,wrap, corsConfig} = require("./controllers/serverController")
 
 
 
-const frontEndLink = `http://localhost:3000`
+
+
 
 // making a basic http server and passing our express app
 const server = require('http').createServer(app)
 
 const io = new Server(server, {
-  cors: {
-    origin: frontEndLink,
-    credentials: true
-  }
+  cors: corsConfig
 })
 
 
 
 app.use(helmet())
-app.use(cors({
-  origin: frontEndLink,
-  credentials: true
-}))
+app.use(cors(corsConfig))
 app.use(morgan('dev'));
 app.use(express.json())
-app.use(session({
-  secret: process.env.COOKIE_SECRET,
-  credentials:true,
-  name:"sid",
-  store: new RedisStore({ client:redisClient }),
-  resave:false,
-  // Don't set a cookie if the user hasn't logged in
-  saveUninitialized:false,
-  cookie:{
-    secure:process.env.ENVIRONMENT === "production",
-    httpOnly:true,
-    sameSite:process.env.ENVIRONMENT === "production" ? "none":"lax",
-    expires: 1000 * 60 * 60 * 24 * 7 
-  }
-
-
-}))
+app.use(sessionMiddleware)
 
 
 
 app.use("/auth", authRouter)
 
-
-
+io.use(wrap(sessionMiddleware))
 
 
 
@@ -70,6 +44,9 @@ app.get("/", (req, res) => {
 
 io.on("connect", (socket) => {
   console.log("io server is connected")
+  // socket id has to be persistent with username/user id to save data 
+  console.log("socket.io conn id: ", socket.id);
+  console.log("user connected (socket.io): ", socket.request.session.user.username);
 })
 
 server.listen(3030, () => {

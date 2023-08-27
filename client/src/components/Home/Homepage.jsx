@@ -3,16 +3,18 @@ import { Button, Grid, GridItem, Tabs } from "@chakra-ui/react";
 import { Sidebar } from "./Sidebar";
 import {Chat}  from "./Chat";
 import { createContext, useState } from "react";
+import useSocketSetup from "./useSocketSetup";
 
 
 export const FriendsContext = createContext()
 export const Homepage = () => {
   const [friendsList, setFriendsList ] = useState([
-    {username: "Ahmed Osama", connected:false},
+    {username: "Leo Messi", connected:false},
     {username: "Menna Kosbar", connected:true},
     {username: "Nada Gebreel", connected:false},
   ])
     const navigate = useNavigate();
+    useSocketSetup();
     
 
     const handleLogoutForm = () => {
