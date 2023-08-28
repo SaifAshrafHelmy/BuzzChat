@@ -6,6 +6,7 @@ const cors = require("cors")
 const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
 const {sessionMiddleware,wrap, corsConfig} = require("./controllers/serverController")
+const { authorizeUser } = require("./controllers/socketController")
 
 
 
@@ -32,7 +33,7 @@ app.use(sessionMiddleware)
 app.use("/auth", authRouter)
 
 io.use(wrap(sessionMiddleware))
-
+io.use(authorizeUser)
 
 
 app.get("/", (req, res) => {
