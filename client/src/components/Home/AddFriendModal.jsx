@@ -7,14 +7,26 @@ import {
     ModalBody,
     ModalCloseButton,
     Button,
+    Heading,
 } from "@chakra-ui/react";
 import { TextField } from "../TextField";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import socket from "../../socket";
+import { useCallback, useContext, useState } from "react";
+import { FriendsContext } from "./Homepage";
+
 
 export const AddFriendModal = ({ isOpen, onClose }) => {
+    const [error, setError] = useState(null);
+    const {setFriendsList} = useContext(FriendsContext);
+    const handleCloseModal = useCallback(() => {
+        onClose();
+        setError("");
+    }, [onClose]);
+
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={handleCloseModal}>
             <ModalOverlay />
 
             <ModalContent>
@@ -31,11 +43,32 @@ export const AddFriendModal = ({ isOpen, onClose }) => {
                     onSubmit={(values, actions) => {
                         // alert(JSON.stringify(values, null, 2))
                         // actions.resetForm();
-                        onClose()
+                        // onClose()
+                        socket.emit(
+                            "add_friend",
+                            values.friendName,
+                            ({ errorMessage, done }) => {
+                                console.log("done?", done);
+                                if (done) {
+                                    handleCloseModal();
+                                    setFriendsList(c=> [values.friendName, ...c])
+                                    return;
+                                } else setError(errorMessage);
+                            }
+                        );
                     }}
                 >
                     <Form>
                         <ModalBody>
+                            <Heading
+                                as={"p"}
+                                fontSize="xl"
+                                color={"red.500"}
+                                textAlign={"center"}
+                                my={"20px"}
+                            >
+                                {error}
+                            </Heading>
                             <TextField
                                 type="text"
                                 name="friendName"

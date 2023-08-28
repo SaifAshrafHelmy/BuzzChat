@@ -2,10 +2,15 @@ import { useContext, useEffect } from "react";
 import socket from "../../socket";
 import { AccountContext } from "../AccountContext";
 
-const useSocketSetup = () => {
+const useSocketSetup = (setFriendsList) => {
     const { setUser } = useContext(AccountContext);
     useEffect(() => {
         socket.connect();
+        socket.on("friends", (friends)=>{
+            setFriendsList(friends);
+            console.log(friends)
+        })
+
         socket.on("connect_error", () => {
             // log user out if they can't connect to the server
             setUser({ loggedIn: false });

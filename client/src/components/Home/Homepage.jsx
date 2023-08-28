@@ -8,13 +8,9 @@ import useSocketSetup from "./useSocketSetup";
 
 export const FriendsContext = createContext()
 export const Homepage = () => {
-  const [friendsList, setFriendsList ] = useState([
-    {username: "Leo Messi", connected:false},
-    {username: "Menna Kosbar", connected:true},
-    {username: "Nada Gebreel", connected:false},
-  ])
+  const [friendsList, setFriendsList ] = useState([])
     const navigate = useNavigate();
-    useSocketSetup();
+    useSocketSetup(setFriendsList);
     
 
     const handleLogoutForm = () => {

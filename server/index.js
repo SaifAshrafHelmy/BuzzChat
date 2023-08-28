@@ -6,7 +6,7 @@ const cors = require("cors")
 const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
 const {sessionMiddleware,wrap, corsConfig} = require("./controllers/serverController")
-const { authorizeUser } = require("./controllers/socketController")
+const { authorizeUser, addFriend, initializeUser } = require("./controllers/socketController")
 
 
 
@@ -37,11 +37,14 @@ io.use(authorizeUser)
 
 
 io.on("connect", (socket) => {
+  initializeUser(socket);
   console.log("io server is connected")
-  console.log("userID:", socket.user.userid);
-  // socket id has to be persistent with username/user id to save data 
-  console.log("socket.io conn id: ", socket.id);
-  console.log("user connected (socket.io): ", socket.request.session.user.username);
+
+
+
+  socket.on("add_friend", (friendName, callBack)=> addFriend(socket, friendName,callBack))
+
+
 })
 
 server.listen(3030, () => {
