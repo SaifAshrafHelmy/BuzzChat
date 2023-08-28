@@ -36,15 +36,9 @@ io.use(wrap(sessionMiddleware))
 io.use(authorizeUser)
 
 
-app.get("/", (req, res) => {
-  res.json("Hi There, homepage!")
-})
-
-
-
-
 io.on("connect", (socket) => {
   console.log("io server is connected")
+  console.log("userID:", socket.user.userid);
   // socket id has to be persistent with username/user id to save data 
   console.log("socket.io conn id: ", socket.id);
   console.log("user connected (socket.io): ", socket.request.session.user.username);

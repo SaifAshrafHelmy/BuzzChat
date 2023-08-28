@@ -1,5 +1,6 @@
 const pool = require("../db")
 const bcrypt = require("bcrypt")
+const {v4: uuidv4} = require("uuid")
 
 module.exports.handleRegisterPOST = async(req,res)=>{
   
@@ -9,11 +10,12 @@ module.exports.handleRegisterPOST = async(req,res)=>{
     // register
     console.log("username is unique");
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    const newUserQuery = await pool.query("INSERT INTO users(username, passhash) VALUES($1, $2) RETURNING id, username;",
-      [req.body.username, hashedPassword])
+    const newUserQuery = await pool.query("INSERT INTO users(username, passhash, userid) VALUES($1, $2, $3) RETURNING id,username, userid;",
+      [req.body.username, hashedPassword, uuidv4()])
     req.session.user = {
       username: req.body.username,
       id: newUserQuery.rows[0].id,
+      userid: newUserQuery.rows[0].userid
     }
     res.json({ loggedIn: true, username: req.body.username })
 
@@ -47,7 +49,7 @@ module.exports.handleLoginGET = (req, res) => {
 
 module.exports.handleLoginPOST = async(req,res)=>{
     // Check the credentials
-    const potentialLogin = await pool.query("SELECT passhash, id FROM users WHERE username = $1;",
+    const potentialLogin = await pool.query("SELECT passhash, id, userid FROM users WHERE username = $1;",
       [req.body.username])
 
     if (potentialLogin.rowCount === 0) {
@@ -57,11 +59,12 @@ module.exports.handleLoginPOST = async(req,res)=>{
 
     const isRightPassword = await bcrypt.compare(req.body.password, potentialLogin.rows[0].passhash)
     if (isRightPassword) {
-      console.log("loggin in..")
+      console.log("logging in..")
 
       req.session.user = {
         username: req.body.username,
         id: potentialLogin.rows[0].id,
+        userid: potentialLogin.rows[0].userid
       }
       res.json({ loggedIn: true, username: req.body.username })
 
