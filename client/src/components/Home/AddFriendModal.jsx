@@ -47,11 +47,11 @@ export const AddFriendModal = ({ isOpen, onClose }) => {
                         socket.emit(
                             "add_friend",
                             values.friendName,
-                            ({ errorMessage, done }) => {
+                            ({ errorMessage, done, newFriend }) => {
                                 console.log("done?", done);
                                 if (done) {
                                     handleCloseModal();
-                                    setFriendsList(c=> [values.friendName, ...c])
+                                    setFriendsList(c=> [newFriend, ...c])
                                     return;
                                 } else setError(errorMessage);
                             }

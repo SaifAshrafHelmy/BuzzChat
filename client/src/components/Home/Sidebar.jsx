@@ -44,7 +44,7 @@ export const Sidebar = () => {
                                 w={"15px"}
                                 h={"15px"}
                             />
-                            <Text>{friend}</Text>
+                            <Text>{friend.username}</Text>
                         </HStack>
                     ))}
                 </VStack>

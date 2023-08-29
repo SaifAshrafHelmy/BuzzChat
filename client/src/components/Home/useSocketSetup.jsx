@@ -10,6 +10,16 @@ const useSocketSetup = (setFriendsList) => {
             setFriendsList(friends);
             console.log(friends)
         })
+        socket.on("connected", (connectionStatus, username)=>{
+            setFriendsList(prevFriends => {
+                return [...prevFriends].map(friend => {
+                    if(friend.username===username){
+                        friend.connected = connectionStatus;
+                    }
+                    return friend;
+                })
+            })
+        })
 
         socket.on("connect_error", () => {
             // log user out if they can't connect to the server
