@@ -7,6 +7,7 @@ const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
 const {sessionMiddleware,wrap, corsConfig} = require("./controllers/serverController")
 const { authorizeUser, addFriend, initializeUser, onDisconnect } = require("./controllers/socketController")
+const chalk = require('chalk');
 
 
 
@@ -27,6 +28,7 @@ app.use(cors(corsConfig))
 app.use(morgan('dev'));
 app.use(express.json())
 app.use(sessionMiddleware)
+
 
 
 

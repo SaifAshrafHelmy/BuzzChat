@@ -8,7 +8,9 @@ const useSocketSetup = (setFriendsList) => {
         socket.connect();
         socket.on("friends", (friends)=>{
             setFriendsList(friends);
+            console.log(`here are your friendssss`);
             console.log(friends)
+
         })
         socket.on("connected", (connectionStatus, username)=>{
             setFriendsList(prevFriends => {

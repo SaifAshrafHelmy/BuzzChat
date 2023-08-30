@@ -1,4 +1,5 @@
 const redisClient = require("../redis")
+const chalk = require('chalk');
 
 
 
@@ -43,19 +44,23 @@ module.exports.initializeUser = async socket => {
     if(friendRooms.length>0)
     {
       socket.to(friendRooms).emit("connected", true, socket.user.username)
+
+      console.log(chalk.bold.underline.rgb(128, 0, 128)
+      (`user ${socket.user.username} Connected`)
+      );
     }
 
     
 
-  console.log("friends:", userParsedFriendsList)
+  // console.log("friends:", userParsedFriendsList)
   socket.emit("friends", userParsedFriendsList)
 
-  console.log(
-    '',
-    { userid: socket.user.userid }, '\n',
-    { username: socket.user.username }, '\n',
-    { conn_id: socket.id }, '\n',
-  )
+  // console.log(
+  //   '',
+  //   { userid: socket.user.userid }, '\n',
+  //   { username: socket.user.username }, '\n',
+  //   { conn_id: socket.id }, '\n',
+  // )
 
 
   
@@ -118,6 +123,10 @@ module.exports.onDisconnect = async (socket) => {
   if(friendRooms.length>0)
   {
     socket.to(friendRooms).emit("connected", false, socket.user.username)
+
+    console.log(chalk.bold.underline.rgb(128, 0, 128)
+    (`user ${socket.user.username} DISconnected`)
+    );
   }
 }
 
@@ -127,10 +136,12 @@ const parsedFriendsList = async (friendsList) => {
   for (let friend of friendsList) {
     const parsedFriend = friend.split(".")
     const friendConnected = await redisClient.hget(`userid:${parsedFriend[0]}`, "connected")
+    friendConnectedBoolean = (friendConnected === "true");
+
     newFriendsList.push({
       username:parsedFriend[0],
       userid:parsedFriend[1],
-      connected: friendConnected
+      connected: friendConnectedBoolean
     })
 
 

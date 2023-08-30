@@ -38,13 +38,14 @@ export const Sidebar = () => {
                     <Text>John Smith</Text>
                 </HStack> */}
                     {friendsList.map((friend) => (
-                        <HStack as={Tab} key={friend} justifyContent={"flex-start"} w={"100%"}>
+                        <HStack as={Tab} key={friend.username} justifyContent={"flex-start"} w={"100%"}>
                             <Circle
-                                bg={friend.connected ? "green.500" : "red.500"}
+                                bg={friend.connected === true ? "green.500" : "red.500"}
                                 w={"15px"}
                                 h={"15px"}
                             />
                             <Text>{friend.username}</Text>
+                            {console.log(friend.username + friend.connected)}
                         </HStack>
                     ))}
                 </VStack>
