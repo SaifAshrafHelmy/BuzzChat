@@ -10,22 +10,21 @@ import {
     Circle,
 } from "@chakra-ui/react";
 import { ChatIcon } from "@chakra-ui/icons";
-import { useDisclosure } from '@chakra-ui/react'
+import { useDisclosure } from "@chakra-ui/react";
 import { useContext } from "react";
 import { FriendsContext } from "./Homepage";
 import { AddFriendModal } from "./AddFriendModal";
 
-
 export const Sidebar = () => {
     const { friendsList, setFriendsList } = useContext(FriendsContext);
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
         <>
             <VStack py={"1.5rem"}>
                 <HStack justifyContent={"space-evenly"} w={"100%"}>
                     <Heading size={"md"}>Add Friend</Heading>
-                    <Button onClick={onOpen} >
+                    <Button onClick={onOpen}>
                         <ChatIcon />
                     </Button>
                 </HStack>
@@ -38,9 +37,24 @@ export const Sidebar = () => {
                     <Text>John Smith</Text>
                 </HStack> */}
                     {friendsList.map((friend) => (
-                        <HStack as={Tab} key={friend.username} justifyContent={"flex-start"} w={"100%"}>
+                        <HStack
+                            as={Tab}
+                            key={`friend:${friend.username}`}
+                            justifyContent={"flex-start"}
+                            w={"100%"}
+                            onClick={()=>{
+
+                                let box = document.getElementById(`bottomDiv:${friend.userid}`);
+                                box?.scrollIntoView({behavior: "instant"})
+                    
+                            }}
+                        >
                             <Circle
-                                bg={friend.connected === true ? "green.500" : "red.500"}
+                                bg={
+                                    friend.connected === true
+                                        ? "green.500"
+                                        : "red.500"
+                                }
                                 w={"15px"}
                                 h={"15px"}
                             />
@@ -50,7 +64,7 @@ export const Sidebar = () => {
                     ))}
                 </VStack>
             </VStack>
-            <AddFriendModal isOpen={isOpen} onClose={onClose}/>
+            <AddFriendModal isOpen={isOpen} onClose={onClose} />
         </>
     );
 };

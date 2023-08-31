@@ -6,8 +6,7 @@ const cors = require("cors")
 const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
 const {sessionMiddleware,wrap, corsConfig} = require("./controllers/serverController")
-const { authorizeUser, addFriend, initializeUser, onDisconnect } = require("./controllers/socketController")
-const chalk = require('chalk');
+const { authorizeUser, addFriend, initializeUser, onDisconnect, dm } = require("./controllers/socketController")
 
 
 
@@ -45,6 +44,7 @@ io.on("connect", (socket) => {
 
 
   socket.on("add_friend", (friendName, callBack)=> addFriend(socket, friendName,callBack))
+  socket.on("dm", (message)=> dm(socket, message))
   socket.on("disconnecting", ()=> onDisconnect(socket))
 
 })
