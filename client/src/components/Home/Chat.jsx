@@ -7,6 +7,11 @@ export const Chat = ({ userid }) => {
     const { friendsList } = useContext(FriendsContext);
     const { messages } = useContext(MessagesContext);
 
+    useEffect(()=>{
+        let box = document.getElementById("emptyBoxToScrollTo");
+        box?.scrollIntoView({behavior: "instant"})
+    })
+
 
 
     return friendsList.length > 0 ? (
