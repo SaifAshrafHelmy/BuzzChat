@@ -22,7 +22,7 @@ export const SignUp = () => {
             validationSchema={Yup.object({
                 username: Yup.string()
                     .required("Username required!")
-                    .min(5, "Username too short!")
+                    .min(4, "Username too short!")
                     .max(28, "Username too long!"),
 
                 password: Yup.string()

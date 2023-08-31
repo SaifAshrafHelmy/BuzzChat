@@ -12,24 +12,16 @@ export const Homepage = () => {
     console.log(friendsList[0])
     const [messages, setMessages] = useState([]);
     const [friendIndex, setFriendIndex] = useState(0);
-    const navigate = useNavigate();
     useSocketSetup(setFriendsList, setMessages);
 
-    const handleLogoutForm = () => {
-        fetch("http://localhost:3030/auth/logout", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        navigate(0);
-    };
+
 
     return (
         <FriendsContext.Provider value={{ friendsList, setFriendsList }}>
             <Grid
                 as={Tabs}
+  
+                variant='solid-rounded' 
                 templateColumns={"repeat(10, 1fr)"}
                 height={"100vh"}
                 onChange={(index) => setFriendIndex(index)}
@@ -44,10 +36,9 @@ export const Homepage = () => {
                     </MessagesContext.Provider>
                 </GridItem>
 
-                {/* 
-      <h2>Hi! Welcome to our homepage!</h2>
-    <Button onClick={handleLogoutForm} colorScheme='red' >Logout</Button> */}
-            </Grid>
+                
+      {/* <h2>Hi! Welcome to our homepage!</h2> */}
+            </Grid> 
         </FriendsContext.Provider>
     );
 };

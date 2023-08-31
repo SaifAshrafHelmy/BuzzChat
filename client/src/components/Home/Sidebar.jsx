@@ -9,28 +9,41 @@ import {
     Text,
     Circle,
 } from "@chakra-ui/react";
-import { ChatIcon } from "@chakra-ui/icons";
+import { AddIcon, ChatIcon } from "@chakra-ui/icons";
 import { useDisclosure } from "@chakra-ui/react";
 import { useContext } from "react";
 import { FriendsContext } from "./Homepage";
 import { AddFriendModal } from "./AddFriendModal";
+import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
     const { friendsList, setFriendsList } = useContext(FriendsContext);
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const navigate = useNavigate();
+
+    const handleLogoutForm = () => {
+        fetch("http://localhost:3030/auth/logout", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        navigate(0);
+    };
 
     return (
         <>
-            <VStack py={"1.5rem"}>
-                <HStack justifyContent={"space-evenly"} w={"100%"}>
-                    <Heading size={"md"}>Add Friend</Heading>
-                    <Button onClick={onOpen}>
-                        <ChatIcon />
+            <VStack py={"1.5rem"} height={"100%"}>
+                <HStack justifyContent={"center"} w={"100%"}>
+                    <Heading size={"md"} marginInline={"0.25rem"}>Add Friend</Heading>
+                    <Button onClick={onOpen} marginInline={"0.25rem"}>
+                        <AddIcon />
                     </Button>
                 </HStack>
                 <Divider />
 
-                <VStack as={TabList}>
+                <VStack as={TabList} >
                     {/* <HStack as={Tab}>
                 <Circle bg={"green.500"} w={"15px"} h={"15px"} />
 
@@ -40,8 +53,10 @@ export const Sidebar = () => {
                         <HStack
                             as={Tab}
                             key={`friend:${friend.username}`}
-                            justifyContent={"flex-start"}
+                            justifyContent={"center"}
                             w={"100%"}
+                            padding={"0.5rem 2rem 0.5rem 2rem"}
+                            my={".25rem"}
                             onClick={()=>{
 
                                 let box = document.getElementById(`bottomDiv:${friend.userid}`);
@@ -62,6 +77,10 @@ export const Sidebar = () => {
                             {console.log(friend.username + friend.connected)}
                         </HStack>
                     ))}
+                </VStack>
+                <VStack height={"100%"} justify={"flex-end"} opacity={"70%"} marginBottom={"0.25rem"}>
+                    <Button onClick={handleLogoutForm} colorScheme={"red"}>Logout</Button> 
+
                 </VStack>
             </VStack>
             <AddFriendModal isOpen={isOpen} onClose={onClose} />
