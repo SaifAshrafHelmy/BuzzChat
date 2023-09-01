@@ -22,7 +22,7 @@ export const Sidebar = () => {
     const navigate = useNavigate();
 
     const handleLogoutForm = () => {
-        fetch("http://localhost:3030/auth/logout", {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/auth/logout`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -36,14 +36,16 @@ export const Sidebar = () => {
         <>
             <VStack py={"1.5rem"} height={"100%"}>
                 <HStack justifyContent={"center"} w={"100%"}>
-                    <Heading size={"md"} marginInline={"0.25rem"}>Add Friend</Heading>
+                    <Heading size={"md"} marginInline={"0.25rem"}>
+                        Add Friend
+                    </Heading>
                     <Button onClick={onOpen} marginInline={"0.25rem"}>
                         <AddIcon />
                     </Button>
                 </HStack>
                 <Divider />
 
-                <VStack as={TabList} >
+                <VStack as={TabList}>
                     {/* <HStack as={Tab}>
                 <Circle bg={"green.500"} w={"15px"} h={"15px"} />
 
@@ -57,11 +59,11 @@ export const Sidebar = () => {
                             w={"100%"}
                             padding={"0.5rem 2rem 0.5rem 2rem"}
                             my={".25rem"}
-                            onClick={()=>{
-
-                                let box = document.getElementById(`bottomDiv:${friend.userid}`);
-                                box?.scrollIntoView({behavior: "instant"})
-                    
+                            onClick={() => {
+                                let box = document.getElementById(
+                                    `bottomDiv:${friend.userid}`
+                                );
+                                box?.scrollIntoView({ behavior: "instant" });
                             }}
                         >
                             <Circle
@@ -78,9 +80,15 @@ export const Sidebar = () => {
                         </HStack>
                     ))}
                 </VStack>
-                <VStack height={"100%"} justify={"flex-end"} opacity={"70%"} marginBottom={"0.25rem"}>
-                    <Button onClick={handleLogoutForm} colorScheme={"red"}>Logout</Button> 
-
+                <VStack
+                    height={"100%"}
+                    justify={"flex-end"}
+                    opacity={"70%"}
+                    marginBottom={"0.25rem"}
+                >
+                    <Button onClick={handleLogoutForm} colorScheme={"red"}>
+                        Logout
+                    </Button>
                 </VStack>
             </VStack>
             <AddFriendModal isOpen={isOpen} onClose={onClose} />

@@ -9,9 +9,9 @@ import { useContext, useState } from "react";
 
 export const SignUp = () => {
     const navigate = useNavigate();
-    const {setUser} = useContext(AccountContext)
-    const [error, setError ]= useState(null)
-    
+    const { setUser } = useContext(AccountContext);
+    const [error, setError] = useState(null);
+
     return (
         <Formik
             initialValues={{
@@ -42,7 +42,7 @@ export const SignUp = () => {
                 const vals = { ...values };
                 // actions.resetForm();
 
-                fetch("http://localhost:3030/auth/register", {
+                fetch(`${process.env.REACT_APP_SERVER_URL}/auth/register`, {
                     method: "POST",
                     credentials: "include",
                     headers: {
@@ -62,12 +62,14 @@ export const SignUp = () => {
                     })
                     .then((data) => {
                         if (!data) return;
-                        setUser({...data})
+                        setUser({ ...data });
 
-                        if(data.status) {setError(data.status)}
+                        if (data.status) {
+                            setError(data.status);
+                        }
                         console.log(data);
-                        if(data.loggedIn){
-                            navigate("/home")
+                        if (data.loggedIn) {
+                            navigate("/home");
                         }
                     });
             }}
@@ -82,7 +84,9 @@ export const SignUp = () => {
             >
                 <Heading mb={"1.5rem"}>Sign Up to BuzzChat</Heading>
 
-                <Text as={"p"} color={"red.500"}>{error}</Text>
+                <Text as={"p"} color={"red.500"}>
+                    {error}
+                </Text>
 
                 <TextField
                     type="text"

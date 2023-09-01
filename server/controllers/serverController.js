@@ -1,7 +1,7 @@
 const session = require("express-session")
 const redisClient = require("../redis")
 const RedisStore = require("connect-redis").default
-const frontEndLink = `http://localhost:3000`
+// const frontEndLink = `http://localhost:3000`
 
 
 require("dotenv").config()
@@ -37,7 +37,7 @@ const wrap = (expressMiddleware) => {
 
 
 const corsConfig = {
-  origin: frontEndLink,
+  origin: process.env.CLIENT_URL,
   credentials: true
 }
 // doing this to use the same session instance in express and socket.io

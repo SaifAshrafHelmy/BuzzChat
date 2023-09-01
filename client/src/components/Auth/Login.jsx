@@ -8,9 +8,8 @@ import { AccountContext } from "../AccountContext";
 
 export const Login = () => {
     const navigate = useNavigate();
-    const {setUser} = useContext(AccountContext)
-    const [error, setError ]= useState(null)
-
+    const { setUser } = useContext(AccountContext);
+    const [error, setError] = useState(null);
 
     return (
         <Formik
@@ -31,7 +30,7 @@ export const Login = () => {
                 const vals = { ...values };
                 // actions.resetForm();
 
-                fetch("http://localhost:3030/auth/login", {
+                fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
                     method: "POST",
                     credentials: "include",
                     headers: {
@@ -43,19 +42,21 @@ export const Login = () => {
                         return;
                     })
                     .then((res) => {
-                        if (!res ) {
+                        if (!res) {
                             return;
                         }
                         return res.json();
                     })
                     .then((data) => {
                         if (!data) return;
-                        setUser({...data})
+                        setUser({ ...data });
 
-                        if(data.status) {setError(data.status)}
+                        if (data.status) {
+                            setError(data.status);
+                        }
                         console.log(data);
-                        if(data.loggedIn){
-                            navigate("/home")
+                        if (data.loggedIn) {
+                            navigate("/home");
                         }
                     });
             }}
@@ -70,8 +71,9 @@ export const Login = () => {
             >
                 <Heading mb={"1.5rem"}>Login to BuzzChat</Heading>
 
-                <Text as={"p"} color={"red.500"}>{error}</Text>
-
+                <Text as={"p"} color={"red.500"}>
+                    {error}
+                </Text>
 
                 <TextField
                     type="text"
