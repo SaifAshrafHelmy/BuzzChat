@@ -1,0 +1,21 @@
+{
+  "name": "buzzchat-messenger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm start",
+    "start-server": "cd server && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaifAshrafHelmy/BuzzChat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaifAshrafHelmy/BuzzChat/issues"
+  },
+  "homepage": "https://github.com/SaifAshrafHelmy/BuzzChat#readme"
+}

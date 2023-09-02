@@ -48,7 +48,7 @@ export const AddFriendModal = ({ isOpen, onClose }) => {
                             "add_friend",
                             values.friendName,
                             ({ errorMessage, done, newFriend }) => {
-                                console.log("done?", done);
+                                // console.log("done?", done);
                                 if (done) {
                                     handleCloseModal();
                                     setFriendsList(c=> [newFriend, ...c])

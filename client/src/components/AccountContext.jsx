@@ -26,7 +26,7 @@ const UserContext = ({ children }) => {
         return res.json();
       })
       .then(data =>{
-        console.log("data is", data);
+        // console.log("data is", data);
         if(!data) return setUser({loggedIn: false})
         setUser({...data})
         navigate("/home")

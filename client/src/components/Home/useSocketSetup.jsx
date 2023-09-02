@@ -12,14 +12,14 @@ const useSocketSetup = (setFriendsList, setMessages) => {
         socket.connect();
         socket.on("friends", (friends)=>{
             setFriendsList(friends);
-            console.log(`here are your friendssss`);
-            console.log(friends)
+            // console.log(`here are your friendssss`);
+            // console.log(friends)
 
         })
         socket.on("messages", (messages)=>{
             setMessages(messages);
-            console.log(`here are your messages`);
-            console.log(messages)
+            // console.log(`here are your messages`);
+            // console.log(messages)
 
         })
 

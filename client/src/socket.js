@@ -9,8 +9,6 @@ const socket = new io(process.env.REACT_APP_SERVER_URL,{
   withCredentials:true,
   
 })
-console.log("this is the urllllllllllll")
-console.log(process.env.REACT_APP_SERVER_URL);
 
 
 export default socket;

@@ -10,7 +10,7 @@ import { Homepage } from "./Home/Homepage"
 
 export const Views = () => {
   const{user} = useContext(AccountContext)
-  console.log("user is", user)
+  // console.log("user is", user)
   
     return user.loggedIn===null? 
     (

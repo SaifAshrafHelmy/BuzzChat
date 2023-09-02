@@ -67,7 +67,7 @@ export const SignUp = () => {
                         if (data.status) {
                             setError(data.status);
                         }
-                        console.log(data);
+                        // console.log(data);
                         if (data.loggedIn) {
                             navigate("/home");
                         }

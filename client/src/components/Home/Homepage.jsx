@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import { Button, Grid, GridItem, Tabs } from "@chakra-ui/react";
+import {  Grid, GridItem, Tabs } from "@chakra-ui/react";
 import { Sidebar } from "./Sidebar";
 import { Chat } from "./Chat";
 import { createContext, useState } from "react";
@@ -9,7 +8,7 @@ export const FriendsContext = createContext();
 export const MessagesContext = createContext();
 export const Homepage = () => {
     const [friendsList, setFriendsList] = useState([]);
-    console.log(friendsList[0])
+    // console.log(friendsList[0])
     const [messages, setMessages] = useState([]);
     const [friendIndex, setFriendIndex] = useState(0);
     useSocketSetup(setFriendsList, setMessages);

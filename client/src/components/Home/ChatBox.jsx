@@ -24,7 +24,7 @@ export const ChatBox = ({ userid }) => {
                 };
                 
                 setMessages(prevMsgs => [message, ...prevMsgs])
-                console.log(JSON.stringify(message));
+                // console.log(JSON.stringify(message));
                 socket.emit("dm", message);
 
 

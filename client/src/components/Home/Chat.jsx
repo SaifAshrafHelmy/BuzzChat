@@ -1,26 +1,21 @@
 import {
-    Tab,
     TabPanel,
     TabPanels,
     Text,
     VStack,
     HStack,
     Button,
-    TabList,
     Divider,
     Heading,
 } from "@chakra-ui/react";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { FriendsContext, MessagesContext } from "./Homepage";
 import { ChatBox } from "./ChatBox";
-import { AddIcon, AtSignIcon } from "@chakra-ui/icons";
-import { AccountContext } from "../AccountContext";
 
 export const Chat = ({ userid }) => {
     const { friendsList } = useContext(FriendsContext);
     const { messages } = useContext(MessagesContext);
-    const { user } = useContext(AccountContext);
-    console.log("user is", user);
+    // console.log("user is", user);
 
     useEffect(() => {
         let box = document.getElementById("emptyBoxToScrollTo");
