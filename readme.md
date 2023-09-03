@@ -53,7 +53,7 @@ The app uses the following technologies:
 2. Install the required dependencies: \
    npm install
 
-3. Create the .env files: \
+3. Create the .env files: 
 
    for backend: \
       DATABASE_HOST=localhost \
@@ -118,7 +118,7 @@ The app uses the following technologies:
  ┣ 📜index.js\
  ┣ 📜package-lock.json\
  ┣ 📜package.json\
- ┗ 📜redis.js\
+ ┗ 📜redis.js
 
 
 
@@ -149,7 +149,7 @@ The app uses the following technologies:
  ┣ 📜.env\
  ┣ 📜package-lock.json\
  ┣ 📜package.json\
- ┗ 📜README.md\
+ ┗ 📜README.md
 
 
 
