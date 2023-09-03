@@ -18,7 +18,7 @@
 
 
 ## Description
-BuzzChat is a Messenger Clone app that allows users to  add friends and chat with them in real-time, 
+**BuzzChat** is a Messenger Clone app that allows users to  add friends and chat with them in **real-time**, 
 The app uses the following technologies:
 
 
@@ -28,20 +28,20 @@ The app uses the following technologies:
  
 > ### Backend Technologies:
 
-- Node.js: The foundation of BuzzChat's backend, providing a robust and efficient runtime environment.
-- Express: Utilized for routing and creating APIs, ensuring smooth communication between the client and server.
-- Express Sessions: Used for handling authentication and user sessions securely.
-- Socket.io: Empowers the app with event-driven real-time communication, making chats instantaneous.
-- Yup: Used for server-side form data validation,to guarantee data integrity and security.
-- PostgreSQL Database: The reliable database solution responsible for storing and managing user's data.
-- Redis: Used for caching and performance optimization.
+- **Node.js:**. The foundation of BuzzChat's backend, providing a robust and efficient runtime environment.
+- **Express**: Utilized for routing and creating APIs, ensuring smooth communication between the client and server.
+- **Express Sessions**: Used for handling authentication and user sessions securely.
+- **Socket.io**: Empowers the app with event-driven real-time communication, making chats instantaneous.
+- **Yup**: Used for server-side form data validation,to guarantee data integrity and security.
+- **PostgreSQL Database**: The reliable database solution responsible for storing and managing user's data.
+- **Redis**: Used for caching and performance optimization.
 
 > ### Frontend Technologies:
-- React: The basis of the app's frontend, providing a interactive and responsive interface.
-- Formik: Enhances the user experience by simplifying form handling and validation.
-- Yup (Client-Side): Ensures data entered by users on the client side is valid, maintaining data quality.
-- Chakra UI: Simplifies the process of building and styling interface components, with visually appealing ready components.
-- Socket.io-client: handles communication with the backend through Socket.io, enabling real-time messaging capabilities.
+- **React**: The basis of the app's frontend, providing a interactive and responsive interface.
+- **Formik**: Enhances the user experience by simplifying form handling and validation.
+- **Yup (Client-Side)**: Ensures data entered by users on the client side is valid, maintaining data quality.
+- **Chakra UI**: Simplifies the process of building and styling interface components, with visually appealing ready components.
+- **Socket.io-client**: handles communication with the backend through Socket.io, enabling real-time messaging capabilities.
 
 
 ## Installation
