@@ -1,5 +1,8 @@
 # BuzzChat
-#### Brief: A Real-Time Messenger app using Nodejs, React, Postgresql and Redis.
+
+![image](https://github.com/SaifAshrafHelmy/BuzzChat/assets/80127623/1d0fe7ff-b333-470d-bd55-4512d960328f)
+ ### A Real-Time Messenger app using Nodejs, React, Postgresql and Redis.
+
 
 
 ## Table of Contents
@@ -8,51 +11,52 @@
 - [Usage](#usage)
 - [Features](#features)
 - [Project Tree](#projecttree)
+- [Screenshots](#screenshots)
 
 
 
 ## Description
 BuzzChat is a Messenger Clone app that allows users to  add friends and chat with them in real-time, 
 The app uses the following technologies:
-
+>
 ### Backend Technologies:
-
-Node.js: The foundation of BuzzChat's backend, providing a robust and efficient runtime environment.
-Express: Utilized for routing and creating APIs, ensuring smooth communication between the client and server.
-Express Sessions: Used for handling authentication and user sessions securely.
-Socket.io: Empowers the app with event-driven real-time communication, making chats instantaneous.
-Yup: Used for server-side form data validation,to guarantee data integrity and security.
-PostgreSQL Database: The reliable database solution responsible for storing and managing user's data.
-Redis: Used for caching and performance optimization.
-
+>>
+- Node.js: The foundation of BuzzChat's backend, providing a robust and efficient runtime environment.
+- Express: Utilized for routing and creating APIs, ensuring smooth communication between the client and server.
+- Express Sessions: Used for handling authentication and user sessions securely.
+- Socket.io: Empowers the app with event-driven real-time communication, making chats instantaneous.
+- Yup: Used for server-side form data validation,to guarantee data integrity and security.
+- PostgreSQL Database: The reliable database solution responsible for storing and managing user's data.
+- Redis: Used for caching and performance optimization.
+>>
 ### Frontend Technologies:
-React: The basis of the app's frontend, providing a interactive and responsive interface.
-Formik: Enhances the user experience by simplifying form handling and validation.
-Yup (Client-Side): Ensures data entered by users on the client side is valid, maintaining data quality.
-Chakra UI: Simplifies the process of building and styling interface components, with visually appealing ready components.
-socket.io-client: handles communication with the backend through Socket.io, enabling real-time messaging capabilities.
+- React: The basis of the app's frontend, providing a interactive and responsive interface.
+- Formik: Enhances the user experience by simplifying form handling and validation.
+- Yup (Client-Side): Ensures data entered by users on the client side is valid, maintaining data quality.
+- Chakra UI: Simplifies the process of building and styling interface components, with visually appealing ready components.
+- Socket.io-client: handles communication with the backend through Socket.io, enabling real-time messaging capabilities.
 
 ## Installation
 
 1. Clone the repository: \
    git clone https://github.com/SaifAshrafHelmy/BuzzChat \
-   cd BuzzChat
+   cd buzzchat
 
 2. Install the required dependencies: \
    npm install
 
 3. Create the .env files: \
 
-   for backend:
-      DATABASE_HOST=localhost
-      DATABASE_PORT=5432
-      DATABASE_USER=postgres
-      DATABASE_PASSWORD=Enter your db password
-      COOKIE_SECRET=Enter a cookie secret
-      CLIENT_URL=http://localhost:3000
+   for backend: \
+      DATABASE_HOST=localhost \
+      DATABASE_PORT=5432 \
+      DATABASE_USER=postgres \
+      DATABASE_PASSWORD=Enter your db password \
+      COOKIE_SECRET=Enter a cookie secret \
+      CLIENT_URL=http://localhost:3000 \
       NODE_ENV=production
 
-   for frontend:
+   for frontend: 
       REACT_APP_SERVER_URL=http://localhost:3030
 
 
@@ -138,3 +142,19 @@ socket.io-client: handles communication with the backend through Socket.io, enab
  ┣ 📜package-lock.json\
  ┣ 📜package.json\
  ┗ 📜README.md\
+
+
+
+## Screenshots
+![image](https://github.com/SaifAshrafHelmy/BuzzChat/assets/80127623/2f4efd65-10b1-49b2-8fe9-fa9afa7013bb)
+![image](https://github.com/SaifAshrafHelmy/BuzzChat/assets/80127623/883b43d7-e453-4bd7-a313-43553e53d888)
+![image](https://github.com/SaifAshrafHelmy/BuzzChat/assets/80127623/1146954b-a03b-4ff9-9e84-3342fb5642de)
+![image](https://github.com/SaifAshrafHelmy/BuzzChat/assets/80127623/f1517860-57b4-4150-9f76-ca312d8d28bb)
+![image](https://github.com/SaifAshrafHelmy/BuzzChat/assets/80127623/acfb2e33-1aa7-4806-b7c1-b9bc39afa7d6)
+![image](https://github.com/SaifAshrafHelmy/BuzzChat/assets/80127623/757ba787-13c6-46d7-b2b7-2f51f1af3055)
+
+
+
+
+
+
