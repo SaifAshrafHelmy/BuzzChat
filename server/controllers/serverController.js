@@ -19,9 +19,9 @@ const sessionMiddleware = session({
   // Don't set a cookie if the user hasn't logged in
   saveUninitialized:false,
   cookie:{
-    secure:process.env.ENVIRONMENT === "production",
+    secure:false,
     httpOnly:true,
-    sameSite:process.env.ENVIRONMENT === "production" ? "none":"lax",
+    sameSite:"lax",
     expires: 1000 * 60 * 60 * 24 * 7 
   }
 
