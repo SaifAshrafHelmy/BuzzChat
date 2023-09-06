@@ -55,7 +55,7 @@ export const Sidebar = () => {
                             key={`friend:${friend.username}`}
                             justifyContent={"center"}
                             w={"100%"}
-                            padding={"0.5rem 2rem 0.5rem 2rem"}
+                            padding={"0.25rem 1rem 0.25rem 1rem"}
                             my={".25rem"}
                             onClick={()=>{
 
@@ -78,7 +78,7 @@ export const Sidebar = () => {
                         </HStack>
                     ))}
                 </VStack>
-                <VStack height={"100%"} justify={"flex-end"} opacity={"70%"} marginBottom={"0.25rem"}>
+                <VStack height={"100%"} justify={"flex-end"} opacity={"70%"} marginBottom={"1.5rem"}>
                     <Button onClick={handleLogoutForm} colorScheme={"red"}>Logout</Button> 
 
                 </VStack>
