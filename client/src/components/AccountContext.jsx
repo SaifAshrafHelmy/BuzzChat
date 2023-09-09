@@ -8,13 +8,16 @@ export const AccountContext = createContext();
 
 // the component
 const UserContext = ({ children }) => {
-    const [user, setUser] = useState({ loggedIn: null });
+    const [user, setUser] = useState({ loggedIn: null, token: localStorage.getItem("token")});
     const navigate = useNavigate();
 
     // run get request to /login each time
     useEffect(()=>{
       fetch("http://localhost:3030/auth/login", {
         credentials: "include",
+        headers:{
+          "authorization":`Bearer ${user.token}`
+        }
       })
       .catch(err => {
         return setUser({loggedIn: false})

@@ -5,8 +5,6 @@ const chalk = require('chalk');
 
 
 module.exports.initializeUser = async socket => {
-  // copy user data from session and attach it to socket.attribute
-  socket.user = socket.request.session.user
 
   // join the room our friends gonna communicate with us to
   socket.join(socket.user.userid)

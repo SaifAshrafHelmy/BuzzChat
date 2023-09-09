@@ -1,7 +1,9 @@
 const redisClient = require("../../redis")
 
 module.exports.addFriend = async (socket, friendName, callBack) => {
+
   console.log(friendName);
+  console.log("someone is trying to add a friend")
 
   if (friendName === socket.user.username) {
     callBack({ done: false, errorMessage: "No self-friending allowed! Time to expand your social circle." })

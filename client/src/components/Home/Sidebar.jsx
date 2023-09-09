@@ -22,6 +22,7 @@ export const Sidebar = () => {
     const navigate = useNavigate();
 
     const handleLogoutForm = () => {
+        localStorage.setItem("token", "")
         fetch("http://localhost:3030/auth/logout", {
             method: "POST",
             credentials: "include",

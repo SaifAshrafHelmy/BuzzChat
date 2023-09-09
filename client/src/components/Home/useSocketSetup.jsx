@@ -1,9 +1,11 @@
 import { useContext, useEffect, useRef } from "react";
-import socket from "../../socket";
+// import socket from "../../socket";
 import { AccountContext } from "../AccountContext";
+import { SocketContext } from "./Homepage";
 
-const useSocketSetup = (setFriendsList, setMessages) => {
+const useSocketSetup = (setFriendsList, setMessages, socket) => {
     const { setUser } = useContext(AccountContext);
+
     const initialized = useRef(false)
 
 
@@ -61,7 +63,7 @@ const useSocketSetup = (setFriendsList, setMessages) => {
         };
 
         // dummy dependency that doesn't change
-    }, [setUser, setFriendsList, setMessages]);
+    }, [setUser, setFriendsList, setMessages, socket]);
 };
 
 export default useSocketSetup;

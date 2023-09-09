@@ -5,7 +5,7 @@ const helmet = require("helmet")
 const cors = require("cors")
 const authRouter = require("./routers/authRouter")
 const morgan = require('morgan')
-const {sessionMiddleware,wrap, corsConfig} = require("./controllers/serverController")
+const { corsConfig} = require("./controllers/serverController")
 const { authorizeUser, addFriend, initializeUser, onDisconnect, dm } = require("./controllers/socketController")
 
 
@@ -24,16 +24,24 @@ const io = new Server(server, {
 
 app.use(helmet())
 app.use(cors(corsConfig))
-app.use(morgan('dev'));
+
+
+// app.use(morgan('dev'));
+// Set the timezone option for morgan
+morgan.token('customDate', function(req, res, tzOffset) {
+  return new Date().toLocaleString(undefined, { timeZone: tzOffset });
+});
+app.use(morgan(' -----=> :method :url :customDate[Europe/Athens]'));
+
 app.use(express.json())
-app.use(sessionMiddleware)
+// app.use(sessionMiddleware)
 
 
 
 
 app.use("/auth", authRouter)
 
-io.use(wrap(sessionMiddleware))
+// io.use(wrap(sessionMiddleware))
 io.use(authorizeUser)
 
 
