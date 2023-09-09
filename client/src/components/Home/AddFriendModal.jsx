@@ -37,7 +37,7 @@ export const AddFriendModal = ({ isOpen, onClose }) => {
                     validationSchema={Yup.object({
                         friendName: Yup.string()
                             .required("friend username required!")
-                            .min(5, "Invalid username!")
+                            .min(4, "Invalid username!")
                             .max(28, "Invalid username!"),
                     })}
                     onSubmit={(values, actions) => {
