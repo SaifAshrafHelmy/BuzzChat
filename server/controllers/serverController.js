@@ -36,7 +36,7 @@ require("dotenv").config()
 
 
 const corsConfig = {
-  origin: frontEndLink,
+  origin: process.env.CLIENT_URL,
   credentials: true
 }
 // doing this to use the same session instance in express and socket.io

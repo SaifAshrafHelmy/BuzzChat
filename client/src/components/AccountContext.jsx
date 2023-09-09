@@ -13,7 +13,7 @@ const UserContext = ({ children }) => {
 
     // run get request to /login each time
     useEffect(()=>{
-      fetch("http://localhost:3030/auth/login", {
+      fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
         credentials: "include",
         headers:{
           "authorization":`Bearer ${user.token}`

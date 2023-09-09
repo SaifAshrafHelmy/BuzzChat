@@ -42,7 +42,7 @@ export const SignUp = () => {
                 const vals = { ...values };
                 // actions.resetForm();
 
-                fetch("http://localhost:3030/auth/register", {
+                fetch(`${process.env.REACT_APP_SERVER_URL}/auth/register`, {
                     method: "POST",
                     credentials: "include",
                     headers: {

@@ -23,7 +23,7 @@ export const Sidebar = () => {
 
     const handleLogoutForm = () => {
         localStorage.setItem("token", "")
-        fetch("http://localhost:3030/auth/logout", {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/auth/logout`, {
             method: "POST",
             credentials: "include",
             headers: {

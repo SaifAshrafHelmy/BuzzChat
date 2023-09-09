@@ -1,7 +1,7 @@
 import {io} from "socket.io-client"
 
 
-const socket = user =>  new io("http://localhost:3030",{
+const socket = user =>  new io(process.env.REACT_APP_SERVER_URL,{
   // the socket should NOT connect to the backend when user is not logged in
   autoConnect:false,
 

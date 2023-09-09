@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm start",
+    "start-server": "cd server && npm run dev"
   },
   "author": "",
   "license": "ISC",

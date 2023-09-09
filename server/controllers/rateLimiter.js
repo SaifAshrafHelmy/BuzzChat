@@ -7,7 +7,7 @@ module.exports.rateLimiter = (secondsLimit, triesLimit)=> {
     // rate limiter to put before heavy calc/processing functions/routes
   
     // const ip = req.socket.remoteAddress;
-    const ip = IP.address();
+    const ip = req.headers["x-forwarded-for"] || IP.address();
   
     console.log("ip address is: ",ip);
   
