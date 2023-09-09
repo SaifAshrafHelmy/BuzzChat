@@ -9,7 +9,7 @@ import {
     Text,
     Circle,
 } from "@chakra-ui/react";
-import { AddIcon, ChatIcon } from "@chakra-ui/icons";
+import { AddIcon } from "@chakra-ui/icons";
 import { useDisclosure } from "@chakra-ui/react";
 import { useContext } from "react";
 import { FriendsContext } from "./Homepage";
@@ -17,7 +17,7 @@ import { AddFriendModal } from "./AddFriendModal";
 import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
-    const { friendsList, setFriendsList } = useContext(FriendsContext);
+    const { friendsList } = useContext(FriendsContext);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const navigate = useNavigate();
 
