@@ -28,6 +28,8 @@ export const Sidebar = () => {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
+
             },
         });
         navigate(0);

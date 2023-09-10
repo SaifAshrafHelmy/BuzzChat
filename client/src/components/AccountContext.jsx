@@ -16,7 +16,9 @@ const UserContext = ({ children }) => {
       fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
         credentials: "include",
         headers:{
-          "authorization":`Bearer ${user.token}`
+          "authorization":`Bearer ${user.token}`,
+          "ngrok-skip-browser-warning": "69420",
+
         }
       })
       .catch(err => {
