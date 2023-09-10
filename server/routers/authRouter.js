@@ -6,6 +6,17 @@ const { handleLoginGET, handleLoginPOST, handleRegisterPOST, handleLogoutPOST } 
 const { rateLimiter } = require('../controllers/rateLimiter')
 
 
+router.all("/login", (req,res,next)=>{
+  console.log("request headers aree..")
+  console.log("request headers aree..")
+  console.log("request headers aree..")
+  console.log("request headers aree..")
+  console.log("request headers aree..")
+  console.log(req.headers.authorization)
+  next()
+
+})
+
 router.route("/register")
   .post(rateLimiter(60,5), validateForm, handleRegisterPOST)
 

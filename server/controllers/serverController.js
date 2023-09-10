@@ -36,7 +36,7 @@ require("dotenv").config()
 
 
 const corsConfig = {
-  origin: process.env.CLIENT_URL,
+  origin: [process.env.CLIENT_URL, "https://buzzchat-messenger.netlify.app"],
   credentials: true
 }
 // doing this to use the same session instance in express and socket.io

@@ -40,7 +40,6 @@ app.use(express.json())
 
 
 app.use("/auth", authRouter)
-
 // io.use(wrap(sessionMiddleware))
 io.use(authorizeUser)
 
