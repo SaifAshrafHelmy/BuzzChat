@@ -40,4 +40,5 @@ const corsConfig = {
   credentials: true
 }
 // doing this to use the same session instance in express and socket.io
+
 module.exports = { corsConfig};
