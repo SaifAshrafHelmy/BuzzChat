@@ -1,5 +1,5 @@
 
-const redisClient = require("../../redis")
+const redisClient = require("../../redis.js")
 const parsedFriendsList = require("./parsedFriendsList")
 const chalk = require('chalk');
 

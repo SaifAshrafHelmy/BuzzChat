@@ -1,4 +1,4 @@
-const redisClient = require("../../redis")
+const redisClient = require("../../redis.js")
 
 module.exports.addFriend = async (socket, friendName, callBack) => {
 

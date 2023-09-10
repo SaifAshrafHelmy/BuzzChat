@@ -1,4 +1,4 @@
-const redisClient = require("../redis")
+const redisClient = require("../redis.js")
 const RedisStore = require("connect-redis").default
 const frontEndLink = `http://localhost:3000`
 
