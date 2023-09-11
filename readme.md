@@ -21,7 +21,7 @@ The app uses the following technologies:
 
 Node.js: The foundation of BuzzChat's backend, providing a robust and efficient runtime environment.
 Express: Utilized for routing and creating APIs, ensuring smooth communication between the client and server.
-Express Sessions: Used for handling authentication and user sessions securely.
+JWT: Used for handling authentication and user sessions securely.
 Socket.io: Empowers the app with event-driven real-time communication, making chats instantaneous.
 Yup: Used for server-side form data validation,to guarantee data integrity and security.
 PostgreSQL Database: The reliable database solution responsible for storing and managing user's data.
@@ -53,6 +53,7 @@ socket.io-client: handles communication with the backend through Socket.io, enab
       COOKIE_SECRET=Enter a cookie secret
       CLIENT_URL=http://localhost:3000
       NODE_ENV=production
+      
 
    for frontend:
       REACT_APP_SERVER_URL=http://localhost:3030
