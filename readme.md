@@ -1,5 +1,7 @@
 # BuzzChat
-#### Brief: A Real-Time Messenger app using Nodejs, React, Postgresql and Redis.
+#### 📌 Brief:        A Real-Time Messenger app using Nodejs, React, Postgresql and Redis.
+#### 📌 Live Demo:    https://buzz-chat-messenger.vercel.app
+#### 📌 Video Demo:   https://www.linkedin.com/feed/update/urn:li:activity:7105890025279561729/
 
 
 ## Table of Contents
